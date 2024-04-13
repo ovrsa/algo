@@ -8,7 +8,7 @@ All documentation and code explanations in this project are provided in Japanese
 
 ## Algorithms Covered
 The repository includes implementations of the following algorithms, along with detailed code explanations:
-- Sorting algorithms (Bubble Sort, Merge Sort, Quick Sort)
+- Sorting algorithms (Bubble Sort, Quick Sort)
 - Search algorithms (Linear Search, Binary Search)
 - Graph algorithms (Dijkstra's Algorithm, A* Algorithm)
 
