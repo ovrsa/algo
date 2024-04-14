@@ -48,6 +48,7 @@ def gnome_sort(arr: list):
         logger.debug('-----')
     return arr
 
+
 """Insertion Sort"""
 def insertion_sort(arr: list[int]) -> list[int]:
     len_numbers = len(arr)
@@ -73,3 +74,8 @@ def insertion_sort(arr: list[int]) -> list[int]:
         logger.debug(f'Inserted {temp} at position {j + 1}, array state: {arr}')
     logger.debug(f'Finished insertion sort, final array state: {arr}')
     return arr
+
+
+"""Quick Sort"""
+def quick_sort(arr: list[int]) -> list[int]:
+    
