@@ -1,6 +1,9 @@
 from time import time
+
 from memory_profiler import memory_usage
+
 from algo.sort import *
+
 
 def measure_performance(func, test_cases):
     """Measure function execution time, memory usage, and correctness for multiple test cases."""
@@ -25,4 +28,5 @@ if __name__ == '__main__':
         ([], []),  # 空のリストのケース
         ([10, -1, 2, 11, 5], [-1, 2, 5, 10, 11])  # 負の数を含むケース
     ]
-    measure_performance(gnome_sort, test_cases)
+    # 実行したい関数を指定
+    measure_performance(insertion_sort, test_cases)

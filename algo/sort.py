@@ -47,3 +47,20 @@ def gnome_sort(arr: list):
             index -= 1
         logger.debug('-----')
     return arr
+
+"""Insertion Sort"""
+def insertion_sort(arr: list[int]) -> list[int]:
+    len_numbers = len(arr)
+    # 0番目の要素は比較対象がないため1から始める
+    for i in range(1, len_numbers):
+        # 比較対象の値をtempに代入
+        temp = arr[i]
+        # 比較対象はi-1から始める
+        j = i - 1
+        # jが0以上かつ、arr[j]の値がtempより大きい場合
+        while j >= 0 and arr[j] > temp:
+            # jの値がtempより大きい場合、j+1にjの値を代入
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = temp
+    return arr
