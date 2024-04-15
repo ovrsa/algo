@@ -76,6 +76,38 @@ def insertion_sort(arr: list[int]) -> list[int]:
     return arr
 
 
+# partition: リストの中から基準値を選び、基準値より小さい値を左に、大きい値を右に分ける
+def partition(arr: list[int], low: int, high: int) -> int:
+    # i: リストの中で基準値より小さい値を探すためのインデックス
+    i = low - 1
+    # pivot: 基準値
+    pivot = arr[high]
+    # j: リストの中を移動するためのインデックス
+    # lowからhighまでの範囲で繰り返す
+    for j in range(low, high):
+        # 基準値より小さい値を探す
+        if arr[j] < pivot:
+            # iを1増やし、arr[i]とarr[j]を入れ替える
+            # これにより、基準値より小さい値を左に移動する
+            # iを増やすことで、基準値より小さい値が見つかった場合に、その値を左に移動する
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+    # 基準値より小さい値を左に移動し終えたら、基準値とi+1の値を入れ替える
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1
+
 """Quick Sort"""
 def quick_sort(arr: list[int]) -> list[int]:
-    
+    # _quick_sort: クイックソートを行う再帰関数
+    # low: リストの先頭のインデックス
+    # high: リストの末尾のインデックス
+    def _quick_sort(arr: list[int], low: int, high: int) -> None:
+        if low < high:
+            # partition_index: 基準値を選ぶためのインデックス
+            partition_index = partition(arr, low, high)
+            # 基準値より左側のリストを再帰的にソートする
+            _quick_sort(arr, low, partition_index -1)
+            # 基準値より右側のリストを再帰的にソートする
+            _quick_sort(arr, partition_index + 1, high)
+    _quick_sort(arr, 0, len(arr) - 1)
+    return arr
