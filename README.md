@@ -23,6 +23,33 @@ cd path/to/algo
 # Run the script
 python3 app.py
 ```
+## Steps for efficient algorithm learning.
+
+1. **Get a better understanding**:.
+   - Read the problem carefully and extract the necessary information.
+   - Clarify what the problem is asking for and what the constraints are.
+
+2.**Connect with relevant knowledge**:.
+   - If there is a known algorithm or data structure that is suitable for solving the problem, consider how it can be applied.
+   - Compare with similar or previously solved problems and consider similarities and differences in approaches.
+
+3.**Summarise in your own words**:.
+   - Summarise in your own words what you have learnt and understood. This will help you to better understand and remember.
+
+4.**Try your hand**:.
+   - It is important to try to solve problems by actually writing code, not just theory. This will help you learn by correcting errors and will give you a deeper understanding of the subject.
+
+5.**Get feedback**:.
+   - Learn new perspectives and areas for improvement by looking at other people's solutions or having your solution reviewed by others.
+
+6.**Repetition**:.
+   - Solving the same types of problems over and over again helps you recognise patterns and solve problems faster and more accurately.
+
+7.**Spaced repetition**:.
+   - Spaced repetitions of the material learnt are reviewed repeatedly over a period of time to ensure that you don't forget what you have learnt. This method helps memory retention and is effective in transferring the information to long-term memory.
+
+
+Translated with www.DeepL.com/Translator (free version)
 
 ## 効率的なアルゴリズム学習のためのステップ
 
