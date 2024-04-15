@@ -22,6 +22,7 @@ git clone https://your-github-repository-link
 cd path/to/algo
 # Run the script
 python3 app.py
+```
 
 ## 効率的なアルゴリズム学習のためのステップ
 
