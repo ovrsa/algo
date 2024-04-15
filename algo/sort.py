@@ -82,11 +82,13 @@ def partition(arr: list[int], low: int, high: int) -> int:
     i = low - 1
     # pivot: 基準値
     pivot = arr[high]
+    logger.debug(f'基準値: {pivot}')
     # j: リストの中を移動するためのインデックス
     # lowからhighまでの範囲で繰り返す
     for j in range(low, high):
         # 基準値より小さい値を探す
-        if arr[j] < pivot:
+        if arr[j] <= pivot:
+            logger.debug(f'arr[j]: {arr[j]}, pivot: {pivot}')
             # iを1増やし、arr[i]とarr[j]を入れ替える
             # これにより、基準値より小さい値を左に移動する
             # iを増やすことで、基準値より小さい値が見つかった場合に、その値を左に移動する
@@ -98,16 +100,23 @@ def partition(arr: list[int], low: int, high: int) -> int:
 
 """Quick Sort"""
 def quick_sort(arr: list[int]) -> list[int]:
-    # _quick_sort: クイックソートを行う再帰関数
+    logger.debug(f'処理の開始: {arr}')
     # low: リストの先頭のインデックス
     # high: リストの末尾のインデックス
     def _quick_sort(arr: list[int], low: int, high: int) -> None:
+    # _quick_sort: クイックソートを行う再帰関数
+        logger.debug(f'_quick_sortの処理: {arr}, {low}, {high}')
         if low < high:
+            logger.debug(f'low: {low}, high: {high}')
             # partition_index: 基準値を選ぶためのインデックス
             partition_index = partition(arr, low, high)
+            logger.debug(f'partition_index: {partition_index}')
             # 基準値より左側のリストを再帰的にソートする
             _quick_sort(arr, low, partition_index -1)
+            logger.debug(f'左側の処理: {arr}, {low}, {partition_index - 1}')
             # 基準値より右側のリストを再帰的にソートする
             _quick_sort(arr, partition_index + 1, high)
+            logger.debug(f'右側の処理: {arr}, {partition_index + 1}, {high}')
+    # リスト全体をソートする
     _quick_sort(arr, 0, len(arr) - 1)
     return arr
