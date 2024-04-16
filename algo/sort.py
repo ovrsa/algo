@@ -2,11 +2,15 @@ from log_config import logger
 
 """Buuble Sort"""
 def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        for j in range(0, n-i-1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+    # リストの長さを取得
+    len_numbers = len(arr)
+    # リミットを設定
+    for i in range(len_numbers):
+        # リストの最後からi番目まで繰り返す
+        for j in range(len_numbers - 1 - i):
+            # arr[j]とarr[j-1]を比較して、arr[j]の方が小さければ入れ替える
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
     return arr
 
 
