@@ -120,3 +120,47 @@ def quick_sort(arr: list[int]) -> list[int]:
     # リスト全体をソートする
     _quick_sort(arr, 0, len(arr) - 1)
     return arr
+
+"""Merge Sort"""
+def merge_sort(arr: list[int]) -> list[int]:
+    # 要素が1つ以下の場合はそのまま返す
+    if len(arr) <= 1:
+        return arr
+    
+    # リストを中央で分割する
+    center = len(arr) // 2
+    left = arr[:center]
+    right = arr[center:]
+
+    # 再帰的に分割を行い、結合する
+    merge_sort(left)
+    merge_sort(right)
+
+    # i: leftのインデックス j: rightのインデックス k: arrのインデックス
+    i = j = k = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            # iの方が大きい場合は、leftの要素をarrに追加する
+            arr[k] = left[i]
+            # iを1増やすことで次の要素に移動する
+            i += 1
+        else:
+            # jの方が大きい場合は、rightの要素をarrに追加する
+            arr[k] = right[j]
+            # jを1増やすことで次の要素に移動する
+            j += 1
+        # 格納対象を次の要素に移動する
+        k += 1
+
+    # leftの要素が残っている場合は、arrに追加する
+    while i < len(left):
+        arr[k] = left[i]
+        i += 1
+        k += 1
+
+    # rightの要素が残っている場合は、arrに追加する
+    while j < len(right):
+        arr[k] = right[j]
+        j += 1
+        k += 1
+    return arr
