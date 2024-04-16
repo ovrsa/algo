@@ -132,7 +132,7 @@ def merge_sort(arr: list[int]) -> list[int]:
     left = arr[:center]
     right = arr[center:]
 
-    # 再帰的に分割を行い、結合する
+    # 再帰的に分割を行う
     merge_sort(left)
     merge_sort(right)
 
