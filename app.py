@@ -29,4 +29,4 @@ if __name__ == '__main__':
         ([10, -1, 2, 11, 5], [-1, 2, 5, 10, 11])  # 負の数を含むケース
     ]
     # 実行したい関数を指定
-    measure_performance(bubble_sort, test_cases)
+    measure_performance(selection_sort, test_cases)
