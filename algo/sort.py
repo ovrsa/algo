@@ -7,6 +7,7 @@ def bubble_sort(arr):
     # リミットを設定
     for i in range(len_numbers):
         # リストの最後からi番目まで繰り返す
+        # len_numbers - 1は次行で隣接する要素を比較するため
         for j in range(len_numbers - 1 - i):
             # arr[j]とarr[j-1]を比較して、arr[j]の方が小さければ入れ替える
             if arr[j] > arr[j + 1]:
@@ -29,16 +30,6 @@ def selection_sort(arr):
         # 最初に設定したiとmin_idxを入れ替える
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr
-
-"""Quick Sort"""
-def quick_sort(arr):
-    if len(arr) <= 1:
-        return arr
-    pivot = arr[len(arr) // 2]
-    left = [x for x in arr if x < pivot]
-    middle = [x for x in arr if x == pivot]
-    right = [x for x in arr if x > pivot]
-    return quick_sort(left) + middle + quick_sort(right)
 
 
 """Gnome Sort"""
@@ -96,50 +87,28 @@ def insertion_sort(arr: list[int]) -> list[int]:
     return arr
 
 
-# partition: リストの中から基準値を選び、基準値より小さい値を左に、大きい値を右に分ける
-def partition(arr: list[int], low: int, high: int) -> int:
-    # i: リストの中で基準値より小さい値を探すためのインデックス
+"""Quick Sort"""
+def partision(arr: list[int], low: int, high: int) -> int:
     i = low - 1
-    # pivot: 基準値
     pivot = arr[high]
-    logger.debug(f'基準値: {pivot}')
-    # j: リストの中を移動するためのインデックス
-    # lowからhighまでの範囲で繰り返す
     for j in range(low, high):
-        # 基準値より小さい値を探す
         if arr[j] <= pivot:
-            logger.debug(f'arr[j]: {arr[j]}, pivot: {pivot}')
-            # iを1増やし、arr[i]とarr[j]を入れ替える
-            # これにより、基準値より小さい値を左に移動する
-            # iを増やすことで、基準値より小さい値が見つかった場合に、その値を左に移動する
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
-    # 基準値より小さい値を左に移動し終えたら、基準値とi+1の値を入れ替える
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
     return i + 1
 
-"""Quick Sort"""
+
 def quick_sort(arr: list[int]) -> list[int]:
-    logger.debug(f'処理の開始: {arr}')
-    # low: リストの先頭のインデックス
-    # high: リストの末尾のインデックス
     def _quick_sort(arr: list[int], low: int, high: int) -> None:
-    # _quick_sort: クイックソートを行う再帰関数
-        logger.debug(f'_quick_sortの処理: {arr}, {low}, {high}')
         if low < high:
-            logger.debug(f'low: {low}, high: {high}')
-            # partition_index: 基準値を選ぶためのインデックス
-            partition_index = partition(arr, low, high)
-            logger.debug(f'partition_index: {partition_index}')
-            # 基準値より左側のリストを再帰的にソートする
-            _quick_sort(arr, low, partition_index -1)
-            logger.debug(f'左側の処理: {arr}, {low}, {partition_index - 1}')
-            # 基準値より右側のリストを再帰的にソートする
-            _quick_sort(arr, partition_index + 1, high)
-            logger.debug(f'右側の処理: {arr}, {partition_index + 1}, {high}')
-    # リスト全体をソートする
+            pi = partision(arr, low, high)
+            # piを基準に再帰的にクイックソートを行う
+            _quick_sort(arr, low, pi - 1)
+            _quick_sort(arr, pi + 1, high)
     _quick_sort(arr, 0, len(arr) - 1)
     return arr
+
 
 """Merge Sort"""
 def merge_sort(arr:list[int]) -> list[int]:
