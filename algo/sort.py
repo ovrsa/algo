@@ -112,22 +112,21 @@ def quick_sort(arr: list[int]) -> list[int]:
 
 """Merge Sort"""
 def merge_sort(arr:list[int]) -> list[int]:
-    # 要素が1つの場合はそのまま返す
+    # 再帰の終了条件
     if len(arr) <= 1:
         return arr
-    # 分割：リストをセンターからleftとrightに分割する
+    
     center = len(arr) // 2
     left = arr[:center]
     right = arr[center:]
 
-    # 最終的にすべての配列が1になるまで再帰的に分割を行う
     merge_sort(left)
     merge_sort(right)
 
+    # i,j,kを0に設定
     i = j = k = 0
-    # 統合：left,rightのどちらかが空になるまで繰り返す
+    # leftとrightの要素を比較して、小さい方をarrに格納する
     while i < len(left) and j < len(right):
-    # 統合：left, rightの要素から1つずつ取り出して、小さい方をarrに格納する
         if left[i] <= right[j]:
             arr[k] = left[i]
             i += 1
@@ -136,14 +135,16 @@ def merge_sort(arr:list[int]) -> list[int]:
             j += 1
         k += 1
 
-    # 残りの要素の格納
+    # 残りの要素を格納する
     while i < len(left):
         arr[k] = left[i]
         i += 1
         k += 1
 
+    # 残りの要素を格納する
     while j < len(right):
         arr[k] = right[j]
         j += 1
         k += 1
+
     return arr
