@@ -88,11 +88,11 @@ def insertion_sort(arr: list[int]) -> list[int]:
 
 
 """Quick Sort"""
-def partision(arr: list[int], low: int, high: int) -> int:
+def partition(arr: list[int], low: int, high: int) -> int:
     i = low - 1
     pivot = arr[high]
     for j in range(low, high):
-        if arr[j] <= pivot:
+        if arr[j] < pivot:
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
@@ -100,12 +100,12 @@ def partision(arr: list[int], low: int, high: int) -> int:
 
 
 def quick_sort(arr: list[int]) -> list[int]:
-    def _quick_sort(arr: list[int], low: int, high: int) -> None:
+    def _quick_sort(arr: list[int], low: int, high: int) -> list[int]:
         if low < high:
-            pi = partision(arr, low, high)
-            # piを基準に再帰的にクイックソートを行う
+            pi = partition(arr, low, high)
             _quick_sort(arr, low, pi - 1)
             _quick_sort(arr, pi + 1, high)
+
     _quick_sort(arr, 0, len(arr) - 1)
     return arr
 
