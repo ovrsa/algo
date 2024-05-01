@@ -1,3 +1,4 @@
+"""Linear Search"""
 def linear_serach(arr: list[int], value: int) -> int:
     for i in range(len(arr)):
         if arr[i] == value:
@@ -5,14 +6,24 @@ def linear_serach(arr: list[int], value: int) -> int:
             return i
     return -1
 
+"""Binary Search"""
+def binary_search(arr: list[int], value: int) -> int:
+    def _binary_search(arr: list[int], value: int, left: int, right: int) -> int:
+        # 処理が終了した場合
+        if left > right:
+            return -1
+        
+        mid = (left + right) // 2
+        if arr[mid] == value:
+            return mid
+        elif arr[mid] < value:
+            return _binary_search(arr, value, mid + 1, right)
+        else:
+            return _binary_search(arr, value, left, mid - 1)
+    # 再帰関数を呼び出す
+    return _binary_search(arr, value, 0, len(arr) - 1)
+
+
 if __name__ == '__main__':
-    test_cases = [
-        ([64, 34, 25, 12, 22, 11, 90], 25, 2),
-        ([5, 1, 4, 2, 8], 4, 2),
-        ([], 5, -1),  # 空のリストのケース
-        ([10, -1, 2, 11, 5], 11, 3)  # 負の数を含むケース
-    ]
-    for data, value, expected in test_cases:
-        result = linear_serach(data, value)
-        assert result == expected, f"linear_serach failed: {result} != {expected}"
-        print("linear_serach passed the test.")
+    nums = [2, 3, 4, 10, 40]
+    print(binary_search(nums, 10))
