@@ -2,29 +2,20 @@ from log_config import logger
 
 """Buuble Sort"""
 def bubble_sort(arr):
-    # リストの長さを取得
     len_numbers = len(arr)
-    # リミットを設定
     for i in range(len_numbers):
-        # リストの最後からi番目まで繰り返す
-        # len_numbers - 1は次行で隣接する要素を比較するため
+        # len_numbers - 1にしているのは後ほど隣接する要素を比較するため
         for j in range(len_numbers - 1 - i):
-            # arr[j]とarr[j-1]を比較して、arr[j]の方が小さければ入れ替える
             if arr[j] > arr[j + 1]:
                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
     return arr
 
 """Selection Sort"""
 def selection_sort(arr):
-    # listの長さを取得
     len_numbers = len(arr)
-    # リミットの設定
     for i in range(len_numbers):
-        # 最小値のindexを設定
         min_idx = i
-        # i+1からリストの最後まで繰り返す
         for j in range(i + 1, len_numbers):
-            # arr[min_idx]がarr[j]より大きい場合、min_idxをjに更新
             if arr[min_idx] > arr[j]:
                 min_idx = j
         # 最初に設定したiとmin_idxを入れ替える
