@@ -10,10 +10,12 @@ class LinkedList:
     def append(self, data: any) -> None:
         """リストの末尾にノードを追加"""
         new_node = Node(data)
+        # そもそもリストが空の場合
         if self.head is None:
             self.head = new_node
             return
         
+        # リストが空でない場合
         last_node = self.head
         while last_node.next:
             last_node = last_node.next
