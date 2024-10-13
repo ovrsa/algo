@@ -1,17 +1,16 @@
 from log_config import logger
 
-"""Buuble Sort"""
 def bubble_sort(arr):
+    """bubble sort"""
     len_numbers = len(arr)
     for i in range(len_numbers):
-        # len_numbers - 1にしているのは後ほど隣接する要素を比較するため
-        for j in range(len_numbers - 1 - i):
-            if arr[j] > arr[j + 1]:
-                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+        for j in range(len_numbers - 1 -i):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
     return arr
 
-"""Selection Sort"""
 def selection_sort(arr):
+    """Selection Sort"""
     len_numbers = len(arr)
     for i in range(len_numbers):
         min_idx = i
@@ -23,8 +22,8 @@ def selection_sort(arr):
     return arr
 
 
-"""Gnome Sort"""
 def gnome_sort(arr: list):
+    """Gnome Sort"""
     n = len(arr)
     logger.debug(n)
     index = 0
@@ -51,8 +50,8 @@ def gnome_sort(arr: list):
     return arr
 
 
-"""Insertion Sort"""
 def insertion_sort(arr: list[int]) -> list[int]:
+    """Insertion Sort"""
     len_numbers = len(arr)
     logger.debug(f'Starting insertion sort on array: {arr}')
     # 0番目の要素は比較対象がないため1から始める
@@ -78,8 +77,8 @@ def insertion_sort(arr: list[int]) -> list[int]:
     return arr
 
 
-"""Quick Sort"""
 def partition(arr: list[int], low: int, high: int) -> int:
+    """Quick Sort"""
     i = low - 1
     pivot = arr[high]
     for j in range(low, high):
@@ -101,8 +100,8 @@ def quick_sort(arr: list[int]) -> list[int]:
     return arr
 
 
-"""Merge Sort"""
 def merge_sort(arr:list[int]) -> list[int]:
+    """Merge Sort"""
     # 再帰の終了条件
     if len(arr) <= 1:
         return arr

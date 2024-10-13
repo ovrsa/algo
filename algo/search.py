@@ -1,13 +1,13 @@
-"""Linear Search"""
 def linear_serach(arr: list[int], value: int) -> int:
+    """Linear Search"""
     for i in range(len(arr)):
         if arr[i] == value:
             print(f'arr[{i}]: {arr[i]}, value: {value}')    
             return i
     return -1
 
-"""Binary Search"""
 def binary_search(arr: list[int], value: int) -> int:
+    """Binary Search"""
     def _binary_search(arr: list[int], value: int, left: int, right: int) -> int:
         # 処理が終了した場合
         if left > right:

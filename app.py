@@ -14,10 +14,8 @@ def measure_performance(func, test_cases):
         mem_usage_end = memory_usage()[0]
         end_time = time()
         
-        # 実行時間とメモリ使用量を表示
         print(f"{func.__name__}: 実行時間 {end_time - start_time} 秒, メモリ使用量 {mem_usage_end - mem_usage_start} MiB")
         
-        # 結果の正確性を検証
         assert result == expected, f"{func.__name__} failed: {result} != {expected}"
         print(f"{func.__name__} passed the test.")
 
@@ -29,4 +27,4 @@ if __name__ == '__main__':
         ([10, -1, 2, 11, 5], [-1, 2, 5, 10, 11])  # 負の数を含むケース
     ]
     # 実行したい関数を指定
-    measure_performance(merge_sort, test_cases)
+    measure_performance(bubble_sort, test_cases)
