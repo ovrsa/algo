@@ -1,7 +1,6 @@
 from log_config import logger
 
 def bubble_sort(arr):
-    """bubble sort"""
     len_numbers = len(arr)
     for i in range(len_numbers):
         for j in range(len_numbers - 1 -i):
@@ -10,43 +9,29 @@ def bubble_sort(arr):
     return arr
 
 def selection_sort(arr):
-    """Selection Sort"""
     len_numbers = len(arr)
     for i in range(len_numbers):
         min_idx = i
-        for j in range(i + 1, len_numbers):
+        for j in range(min_idx, len_numbers):
             if arr[min_idx] > arr[j]:
                 min_idx = j
-        # 最初に設定したiとmin_idxを入れ替える
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
     return arr
 
 
 def gnome_sort(arr: list):
-    """Gnome Sort"""
     n = len(arr)
     logger.debug(n)
     index = 0
     while index < n:
-        logger.debug('+++++')
-        logger.debug(f'arr: {arr}')
-        # 比較対象のラインが0の場合は1にする
         if index == 0:
             index += 1
-        logger.debug(f'arr{index}: {arr[index]}, arr{index-1}: {arr[index-1]}')
-        # 値を入れ替えてindexに1を足す
-        logger.debug(f'index: {index}')
+
         if arr[index] >= arr[index - 1]:
-            logger.debug('pass')
             index += 1
-        # indexとindex-1の値を入れ替える
         else:
             arr[index], arr[index- 1] = arr[index-1], arr[index]
-            logger.debug('check')
-            logger.debug(f'arr{index}: {arr[index]}, arr{index-1}: {arr[index-1]}')
-            # indexから1を引く
             index -= 1
-        logger.debug('-----')
     return arr
 
 
