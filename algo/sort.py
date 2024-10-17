@@ -36,58 +36,39 @@ def gnome_sort(arr: list):
 
 
 def insertion_sort(arr: list[int]) -> list[int]:
-    """Insertion Sort"""
     len_numbers = len(arr)
-    logger.debug(f'Starting insertion sort on array: {arr}')
-    # 0番目の要素は比較対象がないため1から始める
     for i in range(1, len_numbers):
-        logger.debug(f'Iteration {i}: Current array state: {arr}')
-        # 比較対象の値をtempに代入
         temp = arr[i]
-        logger.debug(f'Picking up value {temp} for insertion')
-        # 比較対象はi-1から始める
         j = i - 1
-        # jが0以上かつ、arr[j]の値がtempより大きい場合
         while j >= 0 and arr[j] > temp:
-            logger.debug(f'Comparing {temp} with {arr[j]} at position {j}')
-            # j+1にjの値を代入
             arr[j + 1] = arr[j]
-            logger.debug(f'Moving {arr[j]} to position {j + 1}')
-            # jを1減らすことで次の比較対象に移る
             j -= 1
-        # 最後にtempの値をarr[j+1]に代入することで、挿入を完了する
         arr[j + 1] = temp
-        logger.debug(f'Inserted {temp} at position {j + 1}, array state: {arr}')
-    logger.debug(f'Finished insertion sort, final array state: {arr}')
     return arr
 
 
 def partition(arr: list[int], low: int, high: int) -> int:
-    """Quick Sort"""
     i = low - 1
     pivot = arr[high]
     for j in range(low, high):
-        if arr[j] < pivot:
+        if arr[j] <= pivot:
             i += 1
             arr[i], arr[j] = arr[j], arr[i]
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    arr[i+1], arr[high] = arr[high], arr[i+1]
     return i + 1
 
-
 def quick_sort(arr: list[int]) -> list[int]:
-    def _quick_sort(arr: list[int], low: int, high: int) -> list[int]:
+    def _quick_sort(arr: list[int], low: int, high: int):
         if low < high:
-            pi = partition(arr, low, high)
-            _quick_sort(arr, low, pi - 1)
-            _quick_sort(arr, pi + 1, high)
-
+            partition_idx = partition(arr, low, high)
+            _quick_sort(arr, low, partition_idx - 1)
+            _quick_sort(arr, partition_idx + 1, high)
+    
     _quick_sort(arr, 0, len(arr) - 1)
     return arr
 
 
 def merge_sort(arr:list[int]) -> list[int]:
-    """Merge Sort"""
-    # 再帰の終了条件
     if len(arr) <= 1:
         return arr
     
@@ -98,9 +79,7 @@ def merge_sort(arr:list[int]) -> list[int]:
     merge_sort(left)
     merge_sort(right)
 
-    # i,j,kを0に設定
     i = j = k = 0
-    # leftとrightの要素を比較して、小さい方をarrに格納する
     while i < len(left) and j < len(right):
         if left[i] <= right[j]:
             arr[k] = left[i]
@@ -110,13 +89,11 @@ def merge_sort(arr:list[int]) -> list[int]:
             j += 1
         k += 1
 
-    # 残りの要素を格納する
     while i < len(left):
         arr[k] = left[i]
         i += 1
         k += 1
 
-    # 残りの要素を格納する
     while j < len(right):
         arr[k] = right[j]
         j += 1
